@@ -1,436 +1,72 @@
 <!doctype html>
 <html lang="es">
   <head>
-    <title>Tintorería Can Carbo</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
+    <title>Git</title>    
+    <style type='text/css'>
+	.embeddedServiceHelpButton .helpButton .uiButton {
+		background-color: #005290;
+		font-family: "Arial", sans-serif;
+	}
+	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+		outline: 1px solid #005290;
+	}
+</style>
 
-    <link rel="icon" href="images/laundry.png" type="image/x-icon">
-    
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700, 900|Vollkorn:400i" rel="stylesheet">
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+<script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+<script type='text/javascript'>
+	var initESW = function(gslbBaseURL) {
+		embedded_svc.settings.displayHelpButton = true; //Or false
+		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
 
-    <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
 
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+		// Settings for Chat
+		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+			// Returns a valid button ID.
+		//};
+		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
 
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+		embedded_svc.settings.entryFeature = 'LiveAgent';
 
-    <link rel="stylesheet" href="css/aos.css">
+		embedded_svc.init(
+			'https://renferaas.my.salesforce.com',
+			'https://tuopinion-ayuda-doco.force.com/surveyvisualforce',
+			gslbBaseURL,
+			'00D7Q000001Pq2i',
+			'Chat_GLG',
+			{
+				baseLiveAgentContentURL: 'https://c.la2-c1-fra.salesforceliveagent.com/content',
+				deploymentId: '5727Q000000CycM',
+				buttonId: '5737Q000000CyzV',
+				baseLiveAgentURL: 'https://d.la2-c1-fra.salesforceliveagent.com/chat',
+				eswLiveAgentDevName: 'Chat_GLG',
+				isOfflineSupportEnabled: false
+			}
+		);
+	};
 
-    <link rel="stylesheet" href="css/style.css">
-
-    <script type="text/javascript">
-      var userLang = navigator.language || navigator.userLanguage;
-      //alert(userLang);
-      if(!userLang.includes('es') && !userLang.includes('ca')) window.location.href = "./en.html";
-    </script>
-    
+	if (!window.embedded_svc) {
+		var s = document.createElement('script');
+		s.setAttribute('src', 'https://renferaas.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+		s.onload = function() {
+			initESW(null);
+		};
+		document.body.appendChild(s);
+	} else {
+		initESW('https://service.force.com');
+	}
+</script>
   </head>
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300" id="home-section">
+  <body>
   
-
-  <div id="overlayer"></div>
-  <div class="loader">
-    <div class="spinner-border text-primary" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
-
-
-  <div class="site-wrap">
-
-    <div class="site-mobile-menu site-navbar-target">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div>
-   
-    
-    <header class="site-navbar js-sticky-header site-navbar-target" role="banner" >
-
-      <div class="container">
-        <div class="row align-items-center">
-          
-          <div class="col-6 col-xl-3">
-            <h1 class="mb-0 site-logo"><a href="index.html" class="h4 mb-0">Tintorería Can Carbo.</a></h1>
-          </div>
-
-          <div class="col-12 col-md-9 d-none d-xl-block">
-            <nav class="site-navigation position-relative text-right" role="navigation">
-
-              <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
-                <li><a href="#home-section" class="nav-link">Inicio</a></li>               
-                <li><a href="#services-section" class="nav-link">Nuestros servicios</a></li>
-                <li><a href="#where-section" class="nav-link">¿Dónde estamos?</a></li>
-                <li><a href="#testimonials-section" class="nav-link">Clientes satisfechos</a></li>
-                <li><a href="#contact-section" class="nav-link">Contacto</a></li>
-              </ul>
-            </nav>
-          </div>
-
-
-          <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">
-            <a href="#" class="site-menu-toggle js-menu-toggle float-right">
-              <span class="icon-menu h3"></span>
-            </a>
-          </div>
-
-        </div>
-      </div>
-      
-    </header>
-
-  
-    <section class="site-blocks-cover overflow-hidden bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-7 align-self-center text-center text-md-left">
-            <div class="intro-text">
-              <h1>Tintorería Lavandería <span class="d-md-block">Can Carbo</span></h1>
-              <p class="mb-4">Experiencia a tu servicio.</p>
-            </div>
-          </div>
-          <div class="col-md-5 align-self-end text-center text-md-right">
-            <h2 style="text-align: center;">Desliza <span class="icon-long-arrow-down"></span> para ver más</h2>
-            <img src="images/washing-machine.png" alt="Image" class="img-fluid cover-img">
-          </div>
-        </div>
-      </div>
-    </section> 
-
-
-
-    <section class="site-section " id="services-section">
-      <div class="container">
-        <div class="row justify-content-center" data-aos="fade-up">
-          <div class="col-lg-6 text-center heading-section mb-5">
-            <div class="paws">
-              <span class="icon-local_laundry_service"></span>
-            </div>
-            <h2 class="text-black mb-2">Nuestros servicios</h2>
-            <p>Servicio integral de tintorería y lavandería, para prendas de diario y delicadas.</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up" data-aos-delay="">
-            
-            <div class="block_service">
-              <img src="images/washing-machine.png" alt="Image mb-5">
-              <h3>Mantas, edredones y nordicos</h3>
-              <p>Lavamos en agua y en seco edredones, mantas y cualquier ropa de cama. </p>
-            </div>
-
-          </div>
-          <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="100">
-            <div class="block_service">
-              <img src="images/detergent.png" alt="Image mb-5">
-              <h3>Empresas y profesionales</h3>
-              <p>Limpieza de ropa de trabajo, uniformes, etc. Nos adaptamos a tus necesidades. </p>
-            </div>
-          </div>
-          <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="200">
-            <div class="block_service">
-              <img src="images/laundry-basket.png" alt="Image mb-5">
-              <h3>Bolsas de ropa del hogar</h3>
-              <p>Limpieza de bolsas de colada del hogar usando métodos profesionales para los mejores resultados.</p>
-            </div>
-          </div>
-
-
-          <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="">
-            
-            <div class="block_service">
-              <img src="images/laundry.png" alt="Image mb-5">
-              <h3>Planchado</h3>
-              <p>Realizamos planchado manual a todo tipo de prendas.</p>
-            </div>
-
-          </div>
-          <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="100">
-            <div class="block_service">
-              <img src="images/laundry-service.png" alt="Image mb-5">
-              <h3>Limpieza en seco</h3>
-              <p>Lavado en seco para prendas delicadas con técnicas personalizadas.</p>
-            </div>
-          </div>
-          <div class="col-md-6 mb-4 col-lg-4" data-aos="fade-up"  data-aos-delay="100">
-            <div class="block_service">
-              <img src="images/carpet.png" alt="Image mb-5">
-              <h3>Limpieza de alfombras y cortinas</h3>
-              <p>Lavado en agua y en seco para cortinas y alfombras. Aconsejamos mínimo una limpieza anual.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-
-
-    <section class="site-section bg-primary trainers" id="where-section">
-      <div class="container">
-        <div class="row justify-content-center" data-aos="fade-up">
-          <div class="col-lg-7 text-center heading-section mb-5">
-            <div class="paws white">
-              <span class="icon-local_laundry_service"></span>
-            </div>
-            <h2 class="mb-2 heading">¿Dónde estamos?</h2>
-            <p>Puedes encontrarnos en la calle <span><b>Aiguaviva, 8, en Lloret de Mar.</b></span></p>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.710350863332!2d2.8408608158266784!3d41.70518817923623!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12bb1738adcef35d%3A0x9fb210effdf65c6f!2sTintorer%C3%ADa-Bugaderia%20Can%20Carb%C3%B3!5e0!3m2!1ses!2ses!4v1586532681518!5m2!1ses!2ses" 
-          width="600" height="450" 
-          frameborder="0" style="border:0;" 
-          allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="site-section bg-light block-13" id="testimonials-section" data-aos="fade">
-      <div class="container">
-        
-        <div class="row justify-content-center" data-aos="fade-up">
-          <div class="col-lg-6 text-center heading-section mb-5">
-            <div class="paws">
-              <span class="icon-local_laundry_service"></span>
-            </div>
-            <h2 class="text-black mb-2">Clientes Satisfechos</h2>
-          </div>
-        </div>
-        <div  data-aos="fade-up" data-aos-delay="200">
-          <div class="owl-carousel nonloop-block-13">
-            <div>
-              <div class="block-testimony-1 text-center">
-                
-                <blockquote class="mb-4">
-                  <p>&ldquo;Excepcional profesionalidad y calidad de atención..!!&rdquo;</p>
-                  <p><span class="icon-star"/><span class="icon-star"/><span class="icon-star"/><span class="icon-star"/><span class="icon-star"/></p>
-                </blockquote>
-
-                <figure>
-                  <div class="img-fluid rounded-circle mx-auto">Facebook</div>
-                </figure>
-                <h3 class="font-size-20 text-black">Enric Martinez</h3>
-              </div>
-            </div>
-
-            <div>
-              <div class="block-testimony-1 text-center">
-
-                
-
-                <blockquote class="mb-4">
-                  <p><span class="icon-star"/><span class="icon-star"/><span class="icon-star"/><span class="icon-star"/><span class="icon-star"/></p>
-                </blockquote>
-
-                <figure>
-                  <div class="img-fluid rounded-circle mx-auto">Facebook</div>
-                </figure>
-                <h3 class="font-size-20 mb-4 text-black">Jordi Clavell</h3>
-
-                
-              </div>
-            </div>
-
-            <div>
-              <div class="block-testimony-1 text-center">
-                
-
-                <blockquote class="mb-4">
-                  <p><span class="icon-star"/><span class="icon-star"/><span class="icon-star"/><span class="icon-star"/><span class="icon-star"/></p>
-                </blockquote>
-
-                <figure>
-                  <div class="img-fluid rounded-circle mx-auto">Google Maps</div>
-                </figure>
-                <h3 class="font-size-20 text-black">Alexandra Martinez</h3>
-
-                
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="site-section" id="gallery-section">
-      <div class="container-fluid">
-        <div class="row justify-content-center" data-aos="fade-up">
-          <div class="col-lg-6 text-center heading-section mb-5">
-            <div class="paws">
-              <span class="icon-local_laundry_service"></span>
-            </div>
-            <h2 class="text-black mb-2">Galería de imágenes</h2>
-          </div>
-        </div>
-        <div class="row no-gutters">
-          
-            <!-- <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="images/ld (1).jpg" data-fancybox="gal"><img src="images/ld (1).jpg" alt="Image" class="img-fluid"></a> -->
-
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="images/ld (1).jpg" data-fancybox="gal"><img src="images/ld (1).jpg" alt="Image" class="img-fluid"></a>
-
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="images/ld (2).jpg" data-fancybox="gal"><img src="images/ld (2).jpg" alt="Image" class="img-fluid"></a>
-          
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="images/ld (3).jpg" data-fancybox="gal"><img src="images/ld (3).jpg" alt="Image" class="img-fluid"></a>
-
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="images/ld (4).jpg" data-fancybox="gal"><img src="images/ld (4).jpg" alt="Image" class="img-fluid"></a>
-          
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="images/ld (5).jpg" data-fancybox="gal"><img src="images/ld (5).jpg" alt="Image" class="img-fluid"></a>
-          
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="images/ld (7).jpg" data-fancybox="gal"><img src="images/ld (7).jpg" alt="Image" class="img-fluid"></a>
-          
-            <a class="col-6 col-md-6 col-lg-4 col-xl-3 gal-item d-block" data-aos="fade-up" data-aos-delay="100" href="images/ld (8).jpg" data-fancybox="gal"><img src="images/ld (8).jpg" alt="Image" class="img-fluid"></a>
-          
-        </div>
-      </div>
-    </section>
-
-
-
-    
-    
-    <section class="" id="contact-section">
-      <div class="container">
-        <div class="row no-gutters">
-          <div class="col-lg-6 bg-primary">
-            <form action="contact.php" class="p-5 contact-form">
-              
-              <h2 class="h4 mb-5 heading">Formulario de contacto</h2> 
-
-              <div class="row form-group">
-                <div class="col-md-6 mb-3 mb-md-0">
-                  <label for="fname">Nombre</label>
-                  <input type="text" id="fname" class="form-control">
-                </div>
-                <div class="col-md-6">
-                  <label for="lname">Apellido</label>
-                  <input type="text" id="lname" class="form-control">
-                </div>
-              </div>
-
-              <div class="row form-group">
-                
-                <div class="col-md-12">
-                  <label for="email">Email</label> 
-                  <input type="email" id="email" class="form-control">
-                </div>
-              </div>
-
-              <div class="row form-group">
-                
-                <div class="col-md-12">
-                  <label for="subject">Asunto</label> 
-                  <input type="subject" id="subject" class="form-control">
-                </div>
-              </div>
-
-              <div class="row form-group">
-                <div class="col-md-12">
-                  <label for="message">Mensaje</label> 
-                  <textarea name="message" id="message" cols="30" rows="7" class="form-control" placeholder="Escribe tus sugerencias o dudas aquí..."></textarea>
-                </div>
-              </div>
-
-              <div class="row form-group">
-                <div class="col-md-12">
-                  <input type="submit" value="Enviar Mensaje" class="btn btn-dark btn-md text-white">
-                </div>
-              </div>
-
-  
-            </form>
-          </div>
-          <div class="col-lg-6 bg-secondary">
-            <div class="row justify-content-center align-items-center h-100">
-              <div class="col-lg-6 text-center heading-section mb-5 align-self-center">
-                <div class="paws">
-                  <span class="icon-local_laundry_service"></span>
-                </div>
-                <h2 class="text-white mb-5">Contáctanos</h2>
-                <ul class="list-unstyled text-center address">
-                  <li>
-                    <span class="d-block">Dirección:</span>
-                    <p>Aiguaviva, 8. Lloret de Mar</p>
-                  </li>
-                  <li>
-                    <span class="d-block">Teléfono:</span>
-                    <p>+(34) 972 90 26 30</p>
-                  </li>
-                  <li>
-                    <span class="d-block">Email:</span>
-                    <p>tintoreriacancarbo@hotmail.com</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    
-    
-    <footer class="site-footer">
-      <div class="container">
-        <div class="row text-center">
-          <div class="col-md-12">
-            <div class="row">
-              <div class="col-md-12">
-                <h1 class="footer-heading mb-4">Síguenos en nuestras redes sociales</h1>
-                <a href="https://www.facebook.com/tintocancarbo/" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-                <a href="https://goo.gl/maps/PAGSKA72AR898GUQA" class="pl-3 pr-3"><span class="icon-map-marker"></span></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row pt-5 mt-5 text-center">
-          <div class="col-md-12">
-            <div class="border-top pt-5">
-              <p class="copyright"><small>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></small></p>
-        
-            <p class="copyright"><small>
-              Icons made by <a href="https://www.flaticon.com/authors/good-ware" title="Good Ware">Good Ware</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-            </small></p>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-    </footer>
-
-  </div> <!-- .site-wrap -->
-
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/jquery-ui.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.countdown.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.fancybox.min.js"></script>
-  <script src="js/jquery.sticky.js"></script>
-  <script src="js/isotope.pkgd.min.js"></script>
-
-  
-  <script src="js/main.js"></script>
-
   
   </body>
 </html>
